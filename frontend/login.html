@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login · Portal de Solicitações</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="pagina-login">
+  <main class="cartao-login">
+    <h1>Portal de Solicitações Internas</h1>
+    <p class="sub">Acesse com seu usuário e senha</p>
+
+    <form id="form-login" novalidate>
+      <label for="usuario">Usuário</label>
+      <input id="usuario" name="usuario" autocomplete="username" required autofocus>
+
+      <label for="senha">Senha</label>
+      <input id="senha" name="senha" type="password" autocomplete="current-password" required>
+
+      <p id="erro-login" class="erro" role="alert" hidden></p>
+      <button type="submit" class="btn primario largo">Entrar</button>
+    </form>
+  </main>
+  <script src="/js/login.js"></script>
+</body>
+</html>
