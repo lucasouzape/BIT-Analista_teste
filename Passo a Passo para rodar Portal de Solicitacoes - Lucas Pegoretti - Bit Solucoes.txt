@@ -1,0 +1,122 @@
+===============================================================================
+ Passo a Passo para rodar Portal de Solicitacoes - Lucas Pegoretti - Bit Solucoes
+===============================================================================
+
+1. PRÉ-REQUISITOS
+-------------------------------------------------------------------------------
+  - Node.js versão 22.5 ou superior (recomendado: versão LTS).
+  - Git (opcional, para clonar o repositório).
+  - Um navegador (Chrome, Edge, Firefox...).
+  - Não é necessário instalar banco de dados: o SQLite é embarcado e o
+    arquivo do banco é criado automaticamente na primeira execução.
+
+
+2. INSTALAR O NODE.JS (caso ainda não tenha)
+-------------------------------------------------------------------------------
+  Opção A - Pelo site:
+    - Acesse https://nodejs.org
+    - Baixe a versão LTS (instalador .msi no Windows) e instale.
+    - Mantenha marcada a opção "Add to PATH".
+
+  Opção B - Pelo PowerShell (Windows):
+    winget install OpenJS.NodeJS.LTS
+
+  Depois de instalar:
+    - FECHE o terminal e abra um novo (obrigatório para reconhecer o Node).
+    - Confira a instalação:
+        node -v
+        npm -v
+
+
+3. CLONAR O REPOSITÓRIO
+-------------------------------------------------------------------------------
+  - Abra o terminal (PowerShell no Windows) na pasta onde deseja salvar:
+      git clone https://github.com/lucasouzape/BIT-Analista_teste.git
+
+  - Entre na pasta do projeto:
+      cd BIT-Analista_teste
+
+  - Sem Git: no GitHub, clique em "Code" > "Download ZIP", descompacte
+    e abra o terminal dentro da pasta descompactada.
+
+
+4. INSTALAR AS DEPENDÊNCIAS
+-------------------------------------------------------------------------------
+  - Entre na pasta do backend:
+      cd backend
+
+  - Instale as dependências:
+      npm install
+
+
+5. INICIAR A APLICAÇÃO
+-------------------------------------------------------------------------------
+  - Ainda dentro da pasta "backend":
+      npm start
+
+  - Deve aparecer a mensagem:
+      Portal de Solicitações Internas rodando em http://localhost:3000
+
+  - Mantenha o terminal aberto enquanto usa a aplicação.
+  - Para parar o servidor: pressione Ctrl + C no terminal.
+
+
+6. ABRIR A APLICAÇÃO
+-------------------------------------------------------------------------------
+  - No navegador, acesse:
+      http://localhost:3000
+
+  - Entre com um dos usuários de teste:
+
+      Usuário   Senha      Perfil
+      -------   --------   ------------------------------------------------
+      maria     senha123   Solicitante (cria, edita e exclui as próprias
+                           solicitações com status Aberto)
+      joao      senha123   Solicitante
+      admin     admin123   Atendente (vê todas as solicitações e altera
+                           o status até a conclusão)
+
+
+7. RODAR OS TESTES AUTOMATIZADOS (opcional)
+-------------------------------------------------------------------------------
+  - Dentro da pasta "backend":
+      npm test
+
+
+8. PROBLEMAS COMUNS NO WINDOWS
+-------------------------------------------------------------------------------
+  a) "O termo 'node' não é reconhecido..."
+     - Feche e abra novamente o terminal (ou o VS Code inteiro).
+     - Se persistir, adicione o Node ao PATH da sessão atual:
+         $env:Path += ";C:\Program Files\nodejs"
+     - Para deixar permanente: pesquise no Windows por
+       "Editar as variáveis de ambiente do sistema" > Variáveis de Ambiente
+       > Path > Editar > Novo > C:\Program Files\nodejs > OK.
+
+  b) "npm.ps1 não pode ser carregado porque a execução de scripts foi
+     desabilitada neste sistema"
+     - Execute uma única vez:
+         Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+     - Ou use "npm.cmd" no lugar de "npm":
+         npm.cmd install
+         npm.cmd start
+
+  c) Porta 3000 já está em uso
+     - PowerShell:  $env:PORT=8080; npm start
+     - Depois acesse http://localhost:8080
+
+  d) Reiniciar o banco de dados (voltar aos dados iniciais)
+     - Pare o servidor (Ctrl + C).
+     - Apague o arquivo backend\data\portal.db
+     - Rode "npm start" novamente; o banco será recriado.
+
+
+9. RESUMO RÁPIDO
+-------------------------------------------------------------------------------
+    git clone https://github.com/lucasouzape/BIT-Analista_teste.git
+    cd BIT-Analista_teste\backend
+    npm install
+    npm start
+    -> abrir http://localhost:3000  (login: admin / admin123)
+
+===============================================================================
