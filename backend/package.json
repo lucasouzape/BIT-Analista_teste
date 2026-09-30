@@ -1,0 +1,19 @@
+{
+  "name": "portal-solicitacoes-backend",
+  "version": "1.0.0",
+  "description": "Backend do Portal de Solicitações Internas (Node.js + Express + SQLite)",
+  "main": "src/server.js",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "scripts": {
+    "start": "node --no-warnings=ExperimentalWarning src/server.js",
+    "dev": "node --no-warnings=ExperimentalWarning --watch src/server.js",
+    "test": "node --no-warnings=ExperimentalWarning --test test/*.test.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

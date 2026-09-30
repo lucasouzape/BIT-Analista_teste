@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portal de Solicitações Internas</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header class="topo">
+    <strong class="marca">Portal de Solicitações</strong>
+    <div class="usuario-logado">
+      <span id="nome-usuario"></span>
+      <span id="perfil-usuario" class="etiqueta"></span>
+      <button id="btn-sair" class="btn">Sair</button>
+    </div>
+  </header>
+
+  <main class="conteudo">
+    <section class="resumo" id="resumo"></section>
+
+    <section class="barra">
+      <h1 id="titulo-lista">Minhas solicitações</h1>
+      <button id="btn-nova" class="btn primario">+ Nova solicitação</button>
+    </section>
+
+    <section class="filtros">
+      <input id="filtro-busca" type="search" placeholder="Buscar por título ou descrição">
+      <select id="filtro-status" aria-label="Filtrar por status">
+        <option value="">Todos os status</option>
+      </select>
+      <select id="filtro-categoria" aria-label="Filtrar por categoria">
+        <option value="">Todas as categorias</option>
+      </select>
+    </section>
+
+    <div class="tabela-wrap">
+      <table class="tabela">
+        <thead>
+          <tr>
+            <th>#</th><th>Título</th><th>Categoria</th><th class="col-solicitante">Solicitante</th>
+            <th>Status</th><th>Criada em</th><th class="acoes">Ações</th>
+          </tr>
+        </thead>
+        <tbody id="lista"></tbody>
+      </table>
+      <p id="vazio" class="vazio" hidden>Nenhuma solicitação encontrada.</p>
+    </div>
+  </main>
+
+  <!-- Formulário de criação/edição -->
+  <dialog id="dlg-form">
+    <form id="form-solicitacao" method="dialog" novalidate>
+      <h2 id="form-titulo">Nova solicitação</h2>
+      <label for="f-titulo">Título *</label>
+      <input id="f-titulo" maxlength="150" required>
+
+      <label for="f-categoria">Categoria *</label>
+      <select id="f-categoria" required></select>
+
+      <label for="f-descricao">Descrição *</label>
+      <textarea id="f-descricao" rows="6" maxlength="4000" required></textarea>
+
+      <p id="erro-form" class="erro" role="alert" hidden></p>
+      <div class="rodape-dlg">
+        <button type="button" class="btn" data-fechar>Cancelar</button>
+        <button type="submit" class="btn primario">Salvar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Detalhe / acompanhamento -->
+  <dialog id="dlg-detalhe">
+    <div id="detalhe-conteudo"></div>
+    <form id="form-status" hidden>
+      <h3>Atualizar status</h3>
+      <select id="s-status" required></select>
+      <input id="s-comentario" placeholder="Comentário (opcional)" maxlength="500">
+      <button type="submit" class="btn primario">Aplicar</button>
+      <p id="erro-status" class="erro" role="alert" hidden></p>
+    </form>
+    <div class="rodape-dlg">
+      <button type="button" class="btn" data-fechar>Fechar</button>
+    </div>
+  </dialog>
+
+  <div id="aviso" class="aviso" role="status" hidden></div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
